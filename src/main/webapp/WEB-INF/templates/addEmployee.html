@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Thymeleaf3 + Servlet3 示例</title>
+</head>
+<body>
+<form action="addemployee" method="post">
+    员工姓名:<input type="text" name="employeeName"><br>
+    登录名:<input type="text" name="username"><br>
+    密码:<input type="password" name="password"><br>
+    邮箱:<input type="email" name="email"><br>
+    手机:<input type="tel" name="phone"><br>
+    部门:<select name="departmentId">
+    <option th:text="请选择部门" disabled selected hidden></option>
+    <option th:each="department: ${departmentList}" th:value="${department.departmentId}" th:text="${department.departmentName}"></option>
+    </select><br>
+    状态:<select name="status">
+    <option th:text="请选择状态" disabled selected hidden></option>
+    <option th:each="employeestatus:${employeeStatusList}" th:text="${employeestatus.statusname}" th:value="${employeestatus.status}"></option>
+    </select><br>
+    职位:<select name="role">
+    <option th:text="请选择职位" disabled selected hidden></option>
+    <option th:each="employeeRole:${employeeRoleList}" th:text="${employeeRole.rolename}" th:value="${employeeRole.role}"></option>
+    </select><br>
+    <br>
+    <input type="submit" value="提交">
+
+
+</form>
+</body>
+</html>

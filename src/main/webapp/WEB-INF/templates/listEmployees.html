@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<table border="1" align="center">
+    <thead>
+    <tr align="center">
+        <td>UID</td>
+        <td>员工名</td>
+        <td>登录名</td>
+        <td>手机</td>
+        <td>邮箱</td>
+        <td>状态</td>
+        <td>部门</td>
+        <td>职位</td>
+        <td>密码</td>
+        <td>操作</td>
+        <td>修改</td>
+    </tr>
+    </thead>
+    <tbody>
+    <tr align="center" th:each="employee:${employeeList}">
+        <td th:text="${employee.employeeId}"></td>
+        <td th:text="${employee.employeeName}"></td>
+        <td th:text="${employee.username}"></td>
+        <td th:text="${employee.phone}"></td>
+        <td th:text="${employee.email}"></td>
+        <td th:switch="${employee.status}">
+            <span th:case="'1'">正常</span>
+            <span th:case="'2'">未激活</span>
+            <span th:case="'0'">离职</span>
+        </td>
+        <td th:text="${employee.departmentId}"></td>
+        <td th:text="${employee.role}"></td>
+        <td th:text="${employee.password}"></td>
+        <td ><a th:href="@{delemployee(id=${employee.employeeId})}">删除</a></td>
+        <td ><a th:href="@{toupdateemployee(id=${employee.employeeId})}">修改</a></td>
+    </tr>
+</table>
+</body>
+</html>

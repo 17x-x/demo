@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Thymeleaf3 + Servlet3 示例</title>
+</head>
+<body>
+<form action="updateemployee" method="post">
+    编号:<input type="text" readonly name="employeeId" th:value="${employee.employeeId}"><br>
+    员工姓名:<input type="text" name="employeeName" th:value="${employee.employeeName}"><br>
+    登录名:<input type="text" name="username" th:value="${employee.username}"><br>
+    密码:<input type="password" name="password" th:value="${employee.password}"><br>
+    邮箱:<input type="email" name="email" th:value="${employee.email}"><br>
+    手机:<input type="tel" name="phone" th:value="${employee.phone}"><br>
+    部门:<select name="departmentId">
+    <option th:each="department:${departmentList}" th:text="${department.departmentName}" th:value="${department.departmentid}" th:selected="${department.departmentid} eq ${employee.departmentId}"></option>
+    </select><br>
+    状态:<select name="status">
+    <option th:each="employeestatus:${employeeStatusList}" th:text="${employeestatus.statusname}" th:value="${employeestatus.status}" th:selected="${employeestatus.status} eq ${employee.status}"></option>
+    </select><br>
+    职位:<select name="role">
+    <option th:each="employeeRole:${employeeRoleList}" th:text="${employeeRole.rolename}" th:value="${employeeRole.role}" th:selected="${employeeRole.role} eq ${employee.role}"></option>
+    </select><br><br>
+    <input type="submit" value="提交">
+
+
+</form>
+</body>
+</html>

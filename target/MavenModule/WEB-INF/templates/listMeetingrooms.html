@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<!--nameshace-->
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<meta charset="utf-8" />
+<body>
+<table border="1">
+    <thead>
+    <tr align="center">
+        <th>序号</th>
+        <th>会议室</th>
+        <th>会议地点</th>
+        <th>会议人数</th>
+        <th>会议状态</th>
+        <th>备注</th>
+        <th>操作</th>
+        <th>更新</th>
+    </tr>
+    </thead>
+    <tbody>
+    <!--EL&#45;&#45;expression language 表达式语音，简化-->
+    <!--自定义变量名称，相当于for循环指针变量，对象，属性（树状写法）-->
+    <tr align="center" th:each="meetingroom:${meetingroomList}">
+        <td th:text="${meetingroom.roomid}"></td>
+        <td th:text="${meetingroom.roomnum}"></td>
+        <td th:text="${meetingroom.roomname}"></td>
+        <td th:text="${meetingroom.roomcapcity}"></td>
+        <td th:switch="${meetingroom.status}">
+            <span th:case="0">等待会议</span>
+            <span th:case="1">正在会议</span>
+            <span th:case="2">会议异常</span>
+        </td>
+        <td th:text="${meetingroom.description}"></td>
+        <td ><a th:href="@{delmeetingroom(id=${meetingroom.roomid})}">删除</a></td>
+        <td ><a th:href="@{toupdatemeetingroom(roomid=${meetingroom.roomid})}">更新</a></td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>新增员工</title>
+</head>
+<body>
+<form action="addmeetingroom" method="post">
+<!--    会议ID:<input type="text" name="roomid"><br>-->
+    会议室:<input type="text" name="roomnum"><br>
+    会议地点:<input type="text" name="roomname"><br>
+    会议人数:<input type="text" name="capacity"><br>
+    会议状态:<select name="status">
+    <option th:text="请选择状态" disabled selected hidden></option>
+    <option th:each="meetingroomstatus:${MeetingroomStatusList}" th:text="${meetingroomstatus.statusname}" th:value="${meetingroomstatus.status}">
+    </option>
+    </select><br>
+    备注:<input type="text" name="description"><br><br>
+    <input type="submit" value="提交">
+</form>
+</body>
+</html>
